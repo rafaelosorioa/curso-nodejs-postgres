@@ -195,4 +195,7 @@ $RECYCLE.BIN/
 # Postgres data
 postgres_data
 
+#VScode enviromnet config
+.vscode
+
 # End of https://www.toptal.com/developers/gitignore/api/node,windows,linux,macos
