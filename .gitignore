@@ -195,6 +195,9 @@ $RECYCLE.BIN/
 # Postgres data
 postgres_data
 
+#Mysql data
+mysql_data
+
 #VScode enviromnet config
 .vscode
 
