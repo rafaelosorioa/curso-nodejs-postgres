@@ -15,7 +15,4 @@ const sequelize = new Sequelize(URI, {
 //Pass the connection to the models
 setupModels(sequelize);
 
-//Sync our models with the DB
-sequelize.sync();
-
 module.exports = sequelize;
