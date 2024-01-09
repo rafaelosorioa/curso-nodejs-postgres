@@ -11,6 +11,7 @@ function setupModels(sequelize) {
   User.init(UserSchema, User.config(sequelize));
 
   //Relations
+  User.associate(sequelize.models);
   Customer.associate(sequelize.models);
 }
 
