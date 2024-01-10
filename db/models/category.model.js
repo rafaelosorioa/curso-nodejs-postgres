@@ -14,6 +14,10 @@ const CategorySchema = {
     unique: true,
     type: DataTypes.STRING,
   },
+  image: {
+    allowNull: false,
+    type: DataTypes.STRING,
+  },
   createdAt: {
     allowNull: false,
     field: 'created_at',
