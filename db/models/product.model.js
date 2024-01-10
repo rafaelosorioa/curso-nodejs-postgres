@@ -4,7 +4,7 @@ const { CATEGORY_TABLE } = require('./category.model');
 
 const PRODUCT_TABLE = 'product';
 
-const ProductModel = {
+const ProductSchema = {
   id: {
     allowNull: false,
     autoIncrement: true,
@@ -37,7 +37,7 @@ const ProductModel = {
     field: 'category_id',
     allowNull: false,
     type: DataTypes.INTEGER,
-    reference: {
+    references: {
       model: CATEGORY_TABLE,
       key: 'id',
     },
@@ -61,4 +61,4 @@ class Product extends Model {
   }
 }
 
-module.exports = { PRODUCT_TABLE, ProductModel, Product };
+module.exports = { PRODUCT_TABLE, ProductSchema, Product };
