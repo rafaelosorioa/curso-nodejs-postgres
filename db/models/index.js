@@ -5,14 +5,16 @@ const { Category, CategorySchema } = require('./category.model');
 
 //Add our schemas
 function setupModels(sequelize) {
-  Category.init(CategorySchema, Category.config(sequelize));
   Customer.init(CustomerSchema, Customer.config(sequelize));
-  Product.init(ProductSchema, Product.config(sequelize));
   User.init(UserSchema, User.config(sequelize));
+  Category.init(CategorySchema, Category.config(sequelize));
+  Product.init(ProductSchema, Product.config(sequelize));
 
   //Relations
   User.associate(sequelize.models);
   Customer.associate(sequelize.models);
+  Category.assocciate(sequelize.models);
+  Product.associate(sequelize.models);
 }
 
 module.exports = setupModels;
