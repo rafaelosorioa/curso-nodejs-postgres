@@ -23,27 +23,23 @@ class ProductsService {
   }
 
   async create(data) {
-    const newProduct = {
-      id: faker.datatype.uuid(),
-      ...data,
-    };
-    this.products.push(newProduct);
+    const newProduct = await models.Product.create(data);
     return newProduct;
   }
 
   async find() {
-    const response = await models.Product.findAll();
+    const response = await models.Product.findAll({ include: ['category'] });
     return response;
   }
 
   async findOne(id) {
-    const product = this.products.find((item) => item.id === id);
+    const product = await models.Product.findByPk(id, {
+      include: ['category'],
+    });
     if (!product) {
       throw boom.notFound('product not found');
     }
-    if (product.isBlock) {
-      throw boom.conflict('product is block');
-    }
+
     return product;
   }
 

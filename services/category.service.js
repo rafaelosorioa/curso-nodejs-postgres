@@ -5,6 +5,7 @@ const { models } = require('../libs/sequelize');
 class CategoryService {
   constructor() {}
   async create(data) {
+    data.createdAt = new Date();
     const category = await models.Category.create(data);
     return category;
   }
@@ -15,7 +16,9 @@ class CategoryService {
   }
 
   async findOne(id) {
-    const category = await models.Category.findByPk(id);
+    const category = await models.Category.findByPk(id, {
+      include: ['products'],
+    });
     if (!category) throw boom.notFound('Category not found.');
     return category;
   }
