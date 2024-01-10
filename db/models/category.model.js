@@ -11,18 +11,21 @@ const CategorySchema = {
   },
   name: {
     allowNull: false,
+    unique: true,
     type: DataTypes.STRING,
   },
   createdAt: {
     allowNull: false,
     field: 'created_at',
     type: DataTypes.DATE,
-    default: Sequelize.NOW,
+    default: Sequelize.literal('CURRENT_TIMESTAMP'),
   },
 };
 
 class Category extends Model {
-  static assocciate() {}
+  static assocciate(models) {
+    this.hasMany(models.Product, { as: 'products', foreignKey: 'categoryId' });
+  }
 
   static config(sequelize) {
     return {
