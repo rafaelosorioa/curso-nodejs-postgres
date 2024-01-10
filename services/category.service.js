@@ -5,7 +5,6 @@ const { models } = require('../libs/sequelize');
 class CategoryService {
   constructor() {}
   async create(data) {
-    data.createdAt = new Date();
     const category = await models.Category.create(data);
     return category;
   }
